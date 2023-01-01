@@ -1,0 +1,42 @@
+
+<div class="container">
+    <div class="row">
+      <h2 class="center" style="text-align: center;">Add User</h2>
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+       
+        <form #addressForm="ngForm" class="container mt-3" (ngSubmit)="logValue()">
+            <div class="row justify-content-center">
+              <h4 *ngIf="success" class="alert alert-success text-center">Addess added successfully</h4>
+              <div class="col-md-12">
+                  <button type="button" class="btn btn-primary mb-2 text-right" (click)="addAddress()">Add Address</button>
+                <div class=" row border mb-4 p-3" *ngFor="let address of addresses; let i = index;" style="border : 1px solid grey; margin:10px;padding:10px;" >
+                   
+                    <div class="col-md-6">
+                        <h4>Address {{i + 1}}</h4>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <button type="button" class="btn btn-danger btn-sm" (click)="removeAddress(i)">Remove</button>
+                    </div>
+                   
+                   
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input  [ngClass]="{'error': !address.address && formSubmitted }"  type="text" class="form-control address_{{i}}" [(ngModel)]="address.address" name="address_{{i}}" placeholder="St. Thomas Apartment" value="address.address"/>
+                          </div>
+                    </div>
+                  
+                </div>
+                <div style="border : 1px solid grey; margin:10px;padding:10px;" *ngIf="addresses.length==0">No Address Found</div>
+          
+                <div class="text-right">
+                
+                    <input type="submit" class="btn btn-success" value="Submit"/>
+                </div>
+                
+              </div>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
